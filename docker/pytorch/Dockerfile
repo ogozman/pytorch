@@ -39,5 +39,5 @@ RUN apt-get update
 RUN apt-get install unzip
 RUN git clone https://$user:$password@gitlab.tubit.tu-berlin.de/gozman/IRS_Dataset.git
 RUN git clone https://$user:$password@gitlab.tubit.tu-berlin.de/alic.adrian/irs2018.git
-RUN unzip IRS_Dataset/data.zip -d /irs2018
+RUN unzip IRS_Dataset/data.zip -d irs2018
 
