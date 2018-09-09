@@ -1,5 +1,7 @@
 FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 ARG PYTHON_VERSION=3.6
+ARG user
+ARG password
 RUN apt-get update && apt-get install -y --no-install-recommends \
          build-essential \
          cmake \
@@ -33,3 +35,9 @@ RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install 
 
 WORKDIR /workspace
 RUN chmod -R a+w /workspace
+RUN apt-get update
+RUN apt-get install unzip
+RUN git clone https://$user:$password@gitlab.tubit.tu-berlin.de/gozman/IRS_Dataset.git
+RUN git clone https://$user:$password@gitlab.tubit.tu-berlin.de/alic.adrian/irs2018.git
+RUN unzip IRS_Dataset/data.zip -d /irs2018
+
